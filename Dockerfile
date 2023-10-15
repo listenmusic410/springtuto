@@ -1,10 +1,16 @@
 FROM openjdk:17-jdk-slim
-ARG JAR_FILE=fa1/*.jar
-COPY ${JAR_FILE} fa1.jar
-USER root
-RUN apt-get update && apt-get install -y maven
-USER jenkins
-ENTRYPOINT ["java","-jar","fa1.jar"]
+WORKDIR /app
+COPY fa1/*.jar fa1.jar
+CMD ["java", "-jar", "fa1.jar"]
+
+#it is a running version
+#FROM openjdk:17-jdk-slim
+#ARG JAR_FILE=fa1/*.jar
+#COPY ${JAR_FILE} fa1.jar
+#USER root
+#RUN apt-get update && apt-get install -y maven
+#USER jenkins
+#ENTRYPOINT ["java","-jar","fa1.jar"]
 
  
 
